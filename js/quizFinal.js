@@ -18,7 +18,6 @@ function getAnswers(){
     var answers = document.getElementsByName('p'+i);
     for (var j = 0; j < answers.length; j++) {
       if(answers[j].checked){
-        error = 0;
         userAnswers.push(answers[j].value);
       }else{
         error += 1;
@@ -27,9 +26,11 @@ function getAnswers(){
     if (error === 4) {
       confirm("Hay una pregunta sin resolver");
       console.error("Pregunta sin resolver [" + i + "]");
-      break;
+      return false;
     }
+    error = 0;
   }
+  return true;
 }
 
 // get the user Score
@@ -51,7 +52,8 @@ function calculatePunctuation(answersCount){
 
 // evauates the Quiz with the user answers
 function evaluate(){
-  getAnswers();
-  var finalScore = calculatePunctuation(getScore());
-  confirm(userName + " tu puntuación final es ["+finalScore+"]");
+  if(getAnswers()){
+    var finalScore = calculatePunctuation(getScore());
+    confirm(userName + " tu puntuación final es ["+finalScore+"]");
+  }
 }
