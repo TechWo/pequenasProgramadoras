@@ -1,38 +1,38 @@
-// write your code here
-var rightAnswers = [];
-var userName;
-var userAnswers = [];
+// completa el codigo aqui:
+var respuestasCorrectas = [];
+var nombreUsuario;
+var respuestasUsuario = [];
 
-// obtiene el nombre del usuario
-function getName(){
+// obten el nombre del usuario
+function obterNombre(){
 
 }
 
-// obtiene las respuestas del usuario y valida que
-// se hayan contestado todas
-function getAnswers(){
+// obten las respuestas del usuario y valida que se hayan contestado todas
+function obtenerRespuestas(){
   var error = 0;
   for (var i = 1; i <= ?; i++) {
-    var answers = document.getElementsByName('p'+i);
+    var respuestas = document.getElementsByName('p'+i);
 
     }
     if (error) {
+      // notifica al usuario que tiene errores
 
     }
   }
 }
 
-// obtiene el score (calificación)
-function getScore(){
+// obten la puntuacion del usuario
+function obterPuntuacion(){
 
 }
 
-// calcula la puntuación final
-function calculatePunctuation(answersCount){
+// calcula la calificacion final
+function calcularCalificacion(answersCount){
 
 }
 
-// evalua el resultado del Quiz
-function evaluate(){
+// evalua el resultado del quiz
+function evaluar(){
 
 }

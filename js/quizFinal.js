@@ -1,29 +1,30 @@
-// write your code here
-var rightAnswers = ["Respuesta 2", "Respuesta 3", "Respuesta 1", "Respuesta 4", "Respuesta 4",
-                    "Respuesta 1", "Respuesta 3", "Respuesta 3", "Respuesta 1", "Respuesta 2"];
-var userName;
-var userAnswers = [];
+// completa el codigo aqui:
+var respuestasCorrectas = ["Respuesta 2", "Respuesta 3", "Respuesta 1", "Respuesta 4", "Respuesta 4",
+                           "Respuesta 1", "Respuesta 3", "Respuesta 3", "Respuesta 1", "Respuesta 2"];
+var nombreUsuario;
+var respuestasUsuario = [];
 
-// get the username
-function getName(){
-  userName = prompt("¿Cuál es tu nombre?");
-  console.log("El nombre del usuario es: " + userName);
+// obten el nombre del usuario
+function obterNombre(){
+  nombreUsuario = prompt("¿Cuál es tu nombre?");
+  console.log("El nombre del usuario es: " + nombreUsuario);
 }
 
-// get the answers and validates they're completed
-function getAnswers(){
+// obten las respuestas del usuario y valida que se hayan contestado todas
+function obtenerRespuestas(){
   var error = 0;
-  userAnswers = [];
+  respuestasUsuario = [];
   for (var i = 1; i <= 10; i++) {
-    var answers = document.getElementsByName('p'+i);
-    for (var j = 0; j < answers.length; j++) {
-      if(answers[j].checked){
-        userAnswers.push(answers[j].value);
+    var respuestas = document.getElementsByName('p'+i);
+    for (var j = 0; j < respuestas.length; j++) {
+      if(respuestas[j].checked){
+        respuestasUsuario.push(respuestas[j].value);
       }else{
         error += 1;
       }
     }
     if (error === 4) {
+      // notifica al usuario que tiene errores
       confirm("Hay una pregunta sin resolver");
       console.error("Pregunta sin resolver [" + i + "]");
       return false;
@@ -33,27 +34,27 @@ function getAnswers(){
   return true;
 }
 
-// get the user Score
-function getScore(){
-  var rightAnswersCount = 0;
-  for (var i = 0; i < userAnswers.length; i++) {
-    if(userAnswers[i] === rightAnswers[i]){
-      rightAnswersCount += 1;
+// obten la puntuacion del usuario
+function obterPuntuacion(){
+  var numeroRespuestasCorrectas = 0;
+  for (var i = 0; i < respuestasUsuario.length; i++) {
+    if(respuestasUsuario[i] === respuestasCorrectas[i]){
+      numeroRespuestasCorrectas += 1;
     }
   }
 
-  return rightAnswersCount;
+  return numeroRespuestasCorrectas;
 }
 
-// calculates the punctuation
-function calculatePunctuation(answersCount){
-  return answersCount * 10;
+// calcula la calificacion final
+function calcularCalificacion(numeroRespuestasCorrectas){
+  return numeroRespuestasCorrectas * 10;
 }
 
-// evauates the Quiz with the user answers
-function evaluate(){
-  if(getAnswers()){
-    var finalScore = calculatePunctuation(getScore());
-    confirm(userName + " tu puntuación final es ["+finalScore+"]");
+// evalua el resultado del quiz
+function evaluar(){
+  if(obtenerRespuestas()){
+    var puntuacionFinal = calcularCalificacion(obterPuntuacion());
+    confirm(nombreUsuario + " tu puntuación final es ["+puntuacionFinal+"]");
   }
 }
